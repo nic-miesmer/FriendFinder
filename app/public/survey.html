@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>FriendFinder</title>
+    <title>Friend Finder</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
      <!-- Bootstrap CSS -->
      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"rel="stylesheet">
@@ -23,7 +23,7 @@
             <hr>
 
             <h3><strong>Question 1</strong></h3>
-            <h4>I find making friends very difficult.</h4>
+            <h4>I would rather go out to eat than cook.</h4>
             <select class="chosen-select" id="q1">
                 <option value=""></option>
                 <option value="1">1(Strongly Disagree)</option>
@@ -34,7 +34,7 @@
             </select>
 
             <h3><strong>Question 2</strong></h3>
-            <h4>I always try to learn from my mistakes and take ownership of them.</h4>
+            <h4>Winter is my favorite season.</h4>
             <select class="chosen-select" id="q2">
               <option value=""></option>
               <option value="1">1 (Strongly Disagree)</option>
@@ -46,7 +46,7 @@
         
         
             <h3><strong>Question 3</strong></h3>
-            <h4>I stay calm under pressure.</h4>
+            <h4>I find traveling fun.</h4>
             <select class="chosen-select" id="q3">
               <option value=""></option>
               <option value="1">1 (Strongly Disagree)</option>
@@ -58,7 +58,7 @@
         
         
             <h3><strong>Question 4</strong></h3>
-            <h4>I always consider other people's feelings when making decisions.</h4>
+            <h4>Whiskey is the best liqour.</h4>
             <select class="chosen-select" id="q4">
               <option value=""></option>
               <option value="1">1 (Strongly Disagree)</option>
@@ -70,7 +70,7 @@
         
         
             <h3><strong>Question 5</strong></h3>
-            <h4>Everything has a place and everything in its place</h4>
+            <h4>Cats are superiour to dogs.</h4>
             <select class="chosen-select" id="q5">
               <option value=""></option>
               <option value="1">1 (Strongly Disagree)</option>
@@ -82,7 +82,7 @@
         
         
             <h3><strong>Question 6</strong></h3>
-            <h4>I like to try out new activities and go on adventures.</h4>
+            <h4>I keep my new years resolutions.</h4>
             <select class="chosen-select" id="q6">
               <option value=""></option>
               <option value="1">1 (Strongly Disagree)</option>
@@ -94,7 +94,7 @@
         
         
             <h3><strong>Question 7</strong></h3>
-            <h4>I always conceal my true feelings.</h4>
+            <h4>I enjoy big family gatherings.</h4>
             <select class="chosen-select" id="q7">
               <option value=""></option>
               <option value="1">1 (Strongly Disagree)</option>
@@ -105,7 +105,7 @@
             </select>
         
             <h3><strong>Question 8</strong></h3>
-            <h4>I find myself taking over when involved in group projects</h4>
+            <h4>My family is the most important to me.</h4>
             <select class="chosen-select" id="q8">
               <option value=""></option>
               <option value="1">1 (Strongly Disagree)</option>
@@ -116,7 +116,7 @@
             </select>
         
             <h3><strong>Question 9</strong></h3>
-            <h4>I fear what I do not understand.</h4>
+            <h4>Reading physical books are better than digital.</h4>
             <select class="chosen-select" id="q9">
               <option value=""></option>
               <option value="1">1 (Strongly Disagree)</option>
@@ -127,7 +127,7 @@
             </select>
         
             <h3><strong>Question 10</strong></h3>
-            <h4>I find that I always question authority</h4>
+            <h4>I enjoy surveys.</h4>
             <select class="chosen-select" id="q10">
               <option value=""></option>
               <option value="1">1 (Strongly Disagree)</option>
@@ -148,7 +148,7 @@
             <hr>
             <footer class="footer">
               <div class="container">
-                <p><a href="/api/friends">API Friends List</a> | <a href="https://MarkPish.github.io/FriendFinder/">GitHub Repo</a></p>
+                <a href="/api/friends">API Friends List</a> | 
               </div>
             </footer>
 
@@ -163,42 +163,66 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"crossorigin="anonymous"></script>
     
-    <script>
-      $('#submit').on(click, function(event) {
-              
+    <script type="text/javascript">
+     
+  
+      // Capture the form inputs
+      $("#submit").on("click", function(event) {
         event.preventDefault();
-        if ($("#name").val().trim() === "" || $("#photo").val().trim() === "") {
-          alert("Please complete all questions.");
-          return;
-        } else {
-          var surveyInput = {
-            name: $("#name").val().trim(),
-            photo: $("#photo").val().trim(),
-            scores: [
-              $("#q1").val().trim(),
-              $("#q2").val().trim(),
-              $("#q3").val().trim(),
-              $("#q4").val().trim(),
-              $("#q5").val().trim(),
-              $("#q6").val().trim(),
-              $("#q7").val().trim(),
-              $("#q8").val().trim(),
-              $("#q9").val().trim(),
-              $("#q10").val().trim(),
-            ]
-          }
+  
+        // Form validation
+        function validateForm() {
+          var isValid = true;
+          $(".form-control").each(function() {
+            if ($(this).val() === "") {
+              isValid = false;
+            }
+          });
+  
+          $(".chosen-select").each(function() {
+  
+            if ($(this).val() === "") {
+              isValid = false;
+            }
+          });
+          return isValid;
         }
-      }); 
-   ​
-          //Adding in friend match name and image to modal 
-          $.post("/api/friends", surveyInput)
-            .done(function (data) {
-              $(".modal-content").html("<h1>Your match is " + data.name + "!</h1>");
-              // $("#matchImg").attr("src", data.photo);
-              $('<img src="' + data.photo + '">').appendTo(".modal-content");
-              $("#friendMatchModal").modal();
-            })
-        
+  
+        // If all required fields are filled
+        if (validateForm()) {
+          // Create an object for the user"s data
+          var userData = {
+            name: $("#name").val(),
+            photo: $("#photo").val(),
+            scores: [
+              $("#q1").val(),
+              $("#q2").val(),
+              $("#q3").val(),
+              $("#q4").val(),
+              $("#q5").val(),
+              $("#q6").val(),
+              $("#q7").val(),
+              $("#q8").val(),
+              $("#q9").val(),
+              $("#q10").val()
+            ]
+          };
+  
+          // AJAX post the data to the friends API.
+          $.post("/api/friends", userData, function(data) {
+  
+            // Grab the result from the AJAX post so that the best match's name and photo are displayed.
+            $("#match-name").text(data.name);
+            $("#match-img").attr("src", data.photo);
+  
+            // Show the modal with the best match
+            $("#results-modal").modal("toggle");
+  
+          });
+        } else {
+          alert("Please fill out all fields before submitting!");
+        }
+      });
     </script>
     
 </body>
